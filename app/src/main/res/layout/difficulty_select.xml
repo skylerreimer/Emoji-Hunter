@@ -30,7 +30,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="2">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -67,6 +67,21 @@
 
                 <Button
                     android:text="@string/hard"
+                    android:layout_width="128dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:text="@string/back"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"/>
