@@ -20,11 +20,12 @@
             android:gravity="center">
 
             <TextView
-                android:text="Select Difficulty!"
+                android:text="@string/select"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="36sp"/>
+                android:textSize="36sp"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
         <LinearLayout

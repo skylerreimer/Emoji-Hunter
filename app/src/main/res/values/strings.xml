@@ -7,10 +7,12 @@
     <string name="quit">Exit</string>
     <string name="extras">Extras</string>
 
+    <string name="select">Select a Difficulty!</string>
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
 
+    <string name="optionTitle">Options</string>
     <string name="musicOn">Music: ON</string>
     <string name="musicOff">Music: OFF</string>
     <string name="soundOn">SFX: ON</string>
