@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Hackathon 2016</string>
     <string name="action_settings">Settings</string>
-    <string name="button">Button</string>
+
     <string name="start">Start Game</string>
     <string name="options">Options</string>
     <string name="quit">Exit</string>
     <string name="extras">Extras</string>
+
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
 </resources>
