@@ -23,7 +23,7 @@ public class DrawingBackground extends View {
     }
 
     private Rect topHalf = new Rect();
-    private Paint color = new Paint();
+    private Paint centerText = new Paint(), topText = new Paint();
 
     public DrawingBackground(Context context)
     {
@@ -36,21 +36,25 @@ public class DrawingBackground extends View {
         super.onDraw(canvas);
         topHalf.set(0,0,canvas.getWidth(), canvas.getHeight()/2);
 
-        color.setColor(Color.GRAY);
-        color.setStyle(Paint.Style.FILL);
+        centerText.setColor(Color.GRAY);
+        centerText.setStyle(Paint.Style.FILL);
 
-        canvas.drawRect(topHalf, color);
+        canvas.drawRect(topHalf, centerText);
 
-        color.setColor(Color.argb(255, 249, 129, 0));
-        canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/4, canvas.getWidth()/4,color);
+        topText.setColor(Color.argb(255, 249, 129, 0));
+        centerText.setColor(Color.argb(255, 249, 129, 0));
+        canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/4, canvas.getWidth()/4, centerText);
 
-        color.setTextSize(getStatusBarSize());
+        centerText.setTextSize(getStatusBarSize());
+        topText.setTextSize(getStatusBarSize());
         int score = 0;
-        canvas.drawText("Score: " + score, canvas.getWidth()/10,100,color);
+        canvas.drawText("Score: " + score, 4 ,100, topText);
 
         int timeLeft = 0;
-        canvas.drawText("Time Left: "+timeLeft, 9*canvas.getWidth()/10,100,color );
+        canvas.drawText("Time Left: "+timeLeft, 9*canvas.getWidth()/10,100, topText);
 
-        canvas.drawText("Find this Emoji",400,canvas.getHeight()/2 ,color);
+        centerText.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("Find this Emoji",canvas.getWidth()/2,canvas.getHeight()/2 , centerText);
+
     }
 }
