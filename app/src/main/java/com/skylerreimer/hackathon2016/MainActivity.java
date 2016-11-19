@@ -23,11 +23,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);}
 
 
-    public void trollZach(View view) {
-        Button myButton = (Button) findViewById(R.id.button);
-        myButton.setText("I dont work");
+    public void closeApp(View view){
+        moveTaskToBack(true);
+        MainActivity.this.finish();
     }
-
 
 }
 //test push comment
