@@ -54,11 +54,15 @@ public class DrawingBackground extends View {
 
         scoreText.setTextAlign(Paint.Align.LEFT);
         int score = 0;
-        canvas.drawText("Score: " + score, 0 ,100, scoreText);
+        canvas.drawText("Score: " + score, 0 ,textSize, scoreText);
 
         timeText.setTextAlign(Paint.Align.RIGHT);
-        int timeLeft = 0;
-        canvas.drawText("Time Left: "+timeLeft, canvas.getWidth(),100, timeText);
+        int timeLeft = 9;
+        if (timeLeft >= 10) {
+            canvas.drawText("Time Left: "+ timeLeft, canvas.getWidth(), textSize, timeText);
+        } else {
+            canvas.drawText("Time Left: 0" + timeLeft, canvas.getWidth(),textSize, timeText);
+        }
 
         centerText.setTextAlign(Paint.Align.CENTER);
         canvas.drawText("Find this Emoji",canvas.getWidth()/2, canvas.getHeight()/2 - textSize/2 , centerText);
