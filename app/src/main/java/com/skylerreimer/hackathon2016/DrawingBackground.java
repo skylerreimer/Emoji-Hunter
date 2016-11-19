@@ -6,6 +6,9 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.View;
 import android.content.Context;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 /**
  * Created by Krishna Ganesan on 11/19/2016.
  */
@@ -30,6 +33,20 @@ public class DrawingBackground extends View {
 
         canvas.drawRect(ourRect, blue);
 
+        LinearLayout layout = new LinearLayout(this.getContext());
+
+        TextView textView = new TextView(this.getContext());
+        textView.setVisibility(View.VISIBLE);
+        textView.setText("Hello world");
+        layout.addView(textView);
+
+        layout.measure(canvas.getWidth(), canvas.getHeight());
+        layout.layout(0, 0, canvas.getWidth(), canvas.getHeight() / 2 );
+
+        // To place the text view somewhere specific:
+        canvas.translate(canvas.getWidth()/2, 0);
+
+        layout.draw(canvas);
 
     }
 }

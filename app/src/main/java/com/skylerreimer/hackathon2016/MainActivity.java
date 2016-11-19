@@ -1,6 +1,5 @@
 package com.skylerreimer.hackathon2016;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -15,8 +14,6 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
-
-import static android.R.attr.button;
 
 public class MainActivity extends AppCompatActivity {
     MediaPlayer mp = null;
