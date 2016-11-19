@@ -17,4 +17,5 @@
     <string name="soundOff">SFX: OFF</string>
 
     <string name="back">Back</string>
+    <string name="title_activity_game">GameActivity</string>
 </resources>
