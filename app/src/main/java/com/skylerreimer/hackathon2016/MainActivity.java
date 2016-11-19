@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.AudioFile1);
+        MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.audioFile1);
         mp.start();
         setContentView(R.layout.activity_main);
     }
