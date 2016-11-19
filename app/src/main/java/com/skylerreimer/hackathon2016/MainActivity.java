@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void sfx(View view) {
         Button button = (Button) findViewById(R.id.sfxButton);
 
-        if (button.getText().equals("Music: ON")) {
+        if (button.getText().equals("SFX: ON")) {
             button.setText("SFX: OFF");
             mp.pause();
         } else {
