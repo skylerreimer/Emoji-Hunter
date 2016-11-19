@@ -61,10 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (button.getText().equals("SFX: ON")) {
             button.setText("SFX: OFF");
-            mp.pause();
         } else {
             button.setText("SFX: ON");
-            mp.start();
         }
     }
 }
