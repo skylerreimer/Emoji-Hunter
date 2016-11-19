@@ -42,7 +42,8 @@
                     android:text="@string/easy"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:onClick="startGame"/>
             </LinearLayout>
 
             <LinearLayout
@@ -55,7 +56,8 @@
                     android:text="@string/medium"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:onClick="startGame"/>
 
             </LinearLayout>
 
@@ -69,7 +71,8 @@
                     android:text="@string/hard"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:onClick="startGame"/>
 
             </LinearLayout>
 
