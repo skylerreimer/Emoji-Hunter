@@ -33,20 +33,12 @@ public class DrawingBackground extends View {
 
         canvas.drawRect(ourRect, blue);
 
-        LinearLayout layout = new LinearLayout(this.getContext());
+        blue.setColor(Color.argb(255,  249, 129, 0));
+        blue.setTextSize(40);
+        int score = 0;
+        canvas.drawText("Score: " + score, 10,50,blue);
 
-        TextView textView = new TextView(this.getContext());
-        textView.setVisibility(View.VISIBLE);
-        textView.setText("Hello world");
-        layout.addView(textView);
 
-        layout.measure(canvas.getWidth(), canvas.getHeight());
-        layout.layout(0, 0, canvas.getWidth(), canvas.getHeight() / 2 );
-
-        // To place the text view somewhere specific:
-        canvas.translate(canvas.getWidth()/2, 0);
-
-        layout.draw(canvas);
 
     }
 }
