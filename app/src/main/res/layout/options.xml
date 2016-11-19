@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
-                <Button
+                <Button android:id="@+id/musicButton"
                     android:text="@string/musicOn"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
