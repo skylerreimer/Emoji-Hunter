@@ -32,14 +32,14 @@ public class DrawingBackground extends View {
         blue.setStyle(Paint.Style.FILL);
 
         canvas.drawRect(ourRect, blue);
-
+        
         blue.setColor(Color.argb(255,  249, 129, 0));
         blue.setTextSize(100);
         int score = 0;
-        canvas.drawText("Score: " + score, 100,100,blue);
+        canvas.drawText("Score: " + score, canvas.getWidth()/8,100,blue);
 
         int timeLeft = 0;
-        canvas.drawText("Time Left: "+timeLeft, 800,100,blue );
+        canvas.drawText("Time Left: "+timeLeft, 4*canvas.getWidth()/5,100,blue );
 
         canvas.drawText("Find this Emoji",400,canvas.getHeight()/2,blue);
     }
