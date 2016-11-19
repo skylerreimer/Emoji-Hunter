@@ -34,5 +34,5 @@ public class GameActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();  // Always call the superclass method first
         mp.stop();
-    }
+    } 
 }
