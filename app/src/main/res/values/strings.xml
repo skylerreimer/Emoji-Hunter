@@ -5,4 +5,5 @@
     <string name="start">Start Game</string>
     <string name="options">Options</string>
     <string name="quit">Exit</string>
+    <string name="extras">Extras</string>
 </resources>

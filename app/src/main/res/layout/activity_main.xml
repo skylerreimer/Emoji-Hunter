@@ -40,14 +40,14 @@
                 android:gravity="center">
 
                 <Button
-                    android:text="Button 1"
+                    android:text="@string/start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"/>
 
                 <Button
-                    android:text="Button 2"
+                    android:text="@string/options"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -62,14 +62,14 @@
                 android:gravity="center">
 
                 <Button
-                    android:text="Button 3"
+                    android:text="@string/extras"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"/>
 
                 <Button
-                    android:text="Button 4"
+                    android:text="@string/quit"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
