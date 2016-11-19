@@ -13,7 +13,17 @@ import android.graphics.Bitmap;
 
 public class EmojiGenerator {
 
-// comment
+
+    public EmojiGenerator()
+    {
+
+    }
+
+
+    // comment
+
+
+
 
 
 
