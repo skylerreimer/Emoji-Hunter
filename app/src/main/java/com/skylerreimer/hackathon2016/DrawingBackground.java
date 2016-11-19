@@ -27,20 +27,23 @@ public class DrawingBackground extends View {
         Rect ourRect = new Rect();
         ourRect.set(0,0,canvas.getWidth(), canvas.getHeight()/2);
 
-        Paint blue = new Paint();
-        blue.setColor(Color.BLUE);
-        blue.setStyle(Paint.Style.FILL);
+        Paint color = new Paint();
+        color.setColor(Color.GRAY);
+        color.setStyle(Paint.Style.FILL);
 
-        canvas.drawRect(ourRect, blue);
-        
-        blue.setColor(Color.argb(255,  249, 129, 0));
-        blue.setTextSize(100);
+        canvas.drawRect(ourRect, color);
+
+        color.setColor(Color.argb(255,  249, 129, 0));
+        canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/4, canvas.getWidth()/4,color);
+
+
+        color.setTextSize(100);
         int score = 0;
-        canvas.drawText("Score: " + score, canvas.getWidth()/8,100,blue);
+        canvas.drawText("Score: " + score, canvas.getWidth()/10,100,color);
 
         int timeLeft = 0;
-        canvas.drawText("Time Left: "+timeLeft, 4*canvas.getWidth()/5,100,blue );
+        canvas.drawText("Time Left: "+timeLeft, 9*canvas.getWidth()/10,100,color );
 
-        canvas.drawText("Find this Emoji",400,canvas.getHeight()/2,blue);
+        canvas.drawText("Find this Emoji",400,canvas.getHeight()/2 ,color);
     }
 }
