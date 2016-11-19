@@ -19,7 +19,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Whatever You Want Here"
+                android:text="Select Difficulty!"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -30,54 +30,66 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="2">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center">
 
                 <Button
-                    android:text="@string/start"
-                    android:layout_width="0dp"
+                    android:text="@string/easy"
+                    android:layout_width="128dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="startButton"/>
-
-                <Button
-                    android:text="@string/options"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="optionButton"/>
+                    android:gravity="center"/>
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center">
 
-                <Button
-                    android:text="@string/extras"
-                    android:layout_width="0dp"
+                <Button android:id="@+id/medium_difficulty"
+                    android:text="@string/medium"
+                    android:layout_width="128dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center"/>
 
-                <Button
-                    android:text="@string/quit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="closeApp"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:text="@string/hard"
+                    android:layout_width="128dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1" >
+
+
+            <Button
+                android:text="@string/back"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
 
         </LinearLayout>
     </LinearLayout>
