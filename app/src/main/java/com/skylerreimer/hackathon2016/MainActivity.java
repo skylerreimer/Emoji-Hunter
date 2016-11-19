@@ -2,6 +2,7 @@ package com.skylerreimer.hackathon2016;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void optionButton(View view) {
         setContentView(R.layout.options);
+    }
+
+    public void music(Button button) {
+        if (button.getText().equals("Music: ON")) {
+            button.setText("Music: OFF");
+        } else {
+            button.setText("Music: ON");
+        }
     }
 }
 //test push comment

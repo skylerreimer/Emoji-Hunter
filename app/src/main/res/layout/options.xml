@@ -19,7 +19,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Select Difficulty!"
+                android:text="Change Stuff!"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -32,6 +32,7 @@
             android:layout_height="0dp"
             android:layout_weight="2">
 
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -39,23 +40,11 @@
                 android:gravity="center">
 
                 <Button
-                    android:text="@string/easy"
+                    android:text="@string/musicOn"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <Button android:id="@+id/medium_difficulty"
-                    android:text="@string/medium"
-                    android:layout_width="128dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:onClick="music"/>
 
             </LinearLayout>
 
@@ -66,7 +55,7 @@
                 android:gravity="center">
 
                 <Button
-                    android:text="@string/hard"
+                    android:text="@string/soundOn"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"/>
