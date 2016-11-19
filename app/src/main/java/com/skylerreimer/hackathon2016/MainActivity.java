@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.activity_main);}
+        setContentView(R.layout.activity_main);
+    }
 
 
     public void closeApp(View view){
@@ -28,5 +29,8 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.finish();
     }
 
+    public void startButton(View view){
+        setContentView(R.layout.difficulty_select);
+    }
 }
 //test push comment
