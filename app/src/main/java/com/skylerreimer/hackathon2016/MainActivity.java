@@ -32,5 +32,13 @@ public class MainActivity extends AppCompatActivity {
     public void startButton(View view){
         setContentView(R.layout.difficulty_select);
     }
+
+    public void extraButton(View view) {
+        setContentView(R.layout.extras);
+    }
+
+    public void optionButton(View view) {
+        setContentView(R.layout.options);
+    }
 }
 //test push comment
