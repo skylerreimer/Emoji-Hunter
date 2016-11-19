@@ -6,14 +6,24 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.View;
 import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-/**
- * Created by Krishna Ganesan on 11/19/2016.
- */
+
+
 
 public class DrawingBackground extends View {
+
+    private int getStatusBarSize() {
+
+        int textSize = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            textSize = getResources().getDimensionPixelSize(resourceId);
+        }
+        return textSize;
+    }
+
+    private Rect topHalf = new Rect();
+    private Paint color = new Paint();
 
     public DrawingBackground(Context context)
     {
@@ -24,26 +34,17 @@ public class DrawingBackground extends View {
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
-        Rect ourRect = new Rect();
-        ourRect.set(0,0,canvas.getWidth(), canvas.getHeight()/2);
+        topHalf.set(0,0,canvas.getWidth(), canvas.getHeight()/2);
 
-        Paint color = new Paint();
         color.setColor(Color.GRAY);
         color.setStyle(Paint.Style.FILL);
 
-        canvas.drawRect(ourRect, color);
+        canvas.drawRect(topHalf, color);
 
-        color.setColor(Color.argb(255,  249, 129, 0));
+        color.setColor(Color.argb(255, 249, 129, 0));
         canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/4, canvas.getWidth()/4,color);
 
-
-        int textSize = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            textSize = getResources().getDimensionPixelSize(resourceId);
-        }
-
-        color.setTextSize(textSize);
+        color.setTextSize(getStatusBarSize());
         int score = 0;
         canvas.drawText("Score: " + score, canvas.getWidth()/10,100,color);
 
