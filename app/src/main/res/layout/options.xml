@@ -54,11 +54,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
-                <Button
+                <Button android:id="@+id/sfxButton"
                     android:text="@string/soundOn"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:onClick="sfx"/>
 
             </LinearLayout>
 

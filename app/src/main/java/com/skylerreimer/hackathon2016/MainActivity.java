@@ -55,5 +55,16 @@ public class MainActivity extends AppCompatActivity {
             mp.start();
         }
     }
+
+    public void sfx(View view) {
+        Button button = (Button) findViewById(R.id.sfxButton);
+
+        if (button.getText().equals("Music: ON")) {
+            button.setText("SFX: OFF");
+            mp.pause();
+        } else {
+            button.setText("SFX: ON");
+            mp.start();
+        }
+    }
 }
-//test push comment

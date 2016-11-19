@@ -13,8 +13,8 @@
 
     <string name="musicOn">Music: ON</string>
     <string name="musicOff">Music: OFF</string>
-    <string name="soundOn">Sound: ON</string>
-    <string name="soundOff">Sound: OFF</string>
+    <string name="soundOn">SFX: ON</string>
+    <string name="soundOff">SFX: OFF</string>
 
     <string name="back">Back</string>
 </resources>
