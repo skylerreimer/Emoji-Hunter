@@ -37,7 +37,13 @@ public class DrawingBackground extends View {
         canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/4, canvas.getWidth()/4,color);
 
 
-        color.setTextSize(100);
+        int textSize = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            textSize = getResources().getDimensionPixelSize(resourceId);
+        }
+
+        color.setTextSize(textSize);
         int score = 0;
         canvas.drawText("Score: " + score, canvas.getWidth()/10,100,color);
 
