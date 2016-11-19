@@ -1,27 +1,24 @@
 package com.skylerreimer.hackathon2016;
 
-import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import static android.R.attr.button;
 
+public class MainActivity extends AppCompatActivity {
+    MediaPlayer mp = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.audiofile);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        mp.start();
         setContentView(R.layout.activity_main);
     }
 
@@ -41,6 +38,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void optionButton(View view) {
         setContentView(R.layout.options);
+    }
+
+    public void backButton(View view){
+        setContentView(R.layout.activity_main);
+    }
+
+    public void music(View view) {
+        Button button = (Button) findViewById(R.id.musicButton);
+
+        if (button.getText().equals("Music: ON")) {
+            button.setText("Music: OFF");
+            mp.pause();
+        } else {
+            button.setText("Music: ON");
+            mp.start();
+        }
     }
 }
 //test push comment
