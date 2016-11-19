@@ -37,23 +37,27 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center">
 
                 <Button
                     android:text="@string/start"
-                    android:layout_width="0dp"
+                    android:layout_width="256dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="startButton"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
                 <Button
                     android:text="@string/options"
-                    android:layout_width="0dp"
+                    android:layout_width="256dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="optionButton"/>
             </LinearLayout>
@@ -61,22 +65,27 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center">
 
                 <Button
                     android:text="@string/extras"
-                    android:layout_width="0dp"
+                    android:layout_width="256dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
                 <Button
                     android:text="@string/quit"
-                    android:layout_width="0dp"
+                    android:layout_width="256dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:onClick="closeApp"/>
             </LinearLayout>
