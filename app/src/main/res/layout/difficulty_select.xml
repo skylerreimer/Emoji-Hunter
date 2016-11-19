@@ -89,7 +89,8 @@
                 android:text="@string/back"
                 android:layout_width="128dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:onClick="backButton"/>
 
         </LinearLayout>
     </LinearLayout>

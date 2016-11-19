@@ -11,14 +11,13 @@ import android.widget.Button;
 import static android.R.attr.button;
 
 public class MainActivity extends AppCompatActivity {
-
+    MediaPlayer mp = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.audiofile);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.audiofile);
         mp.start();
         setContentView(R.layout.activity_main);
     }
@@ -39,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void optionButton(View view) {
         setContentView(R.layout.options);
+    }
+
+    public void backButton(View view){
+        setContentView(R.layout.activity_main);
     }
 
     public void music(View view) {
