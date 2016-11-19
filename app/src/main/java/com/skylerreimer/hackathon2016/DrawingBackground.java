@@ -41,6 +41,6 @@ public class DrawingBackground extends View {
         int timeLeft = 0;
         canvas.drawText("Time Left: "+timeLeft, 800,100,blue );
 
-        canvas.drawText("Find this Emoji",400,1150,blue);
+        canvas.drawText("Find this Emoji",400,canvas.getHeight()/2,blue);
     }
 }
