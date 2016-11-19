@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         if (button.getText().equals("SFX: ON")) {
             button.setText(R.string.soundOff);
         } else {
-            button.setText(R.string.soundOff);
+            button.setText(R.string.soundOn);
         }
     }
 }
