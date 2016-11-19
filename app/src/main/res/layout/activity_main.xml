@@ -30,7 +30,7 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:onClick="trollZach" />
 
-    <include layout="@layout/content_main" />
+
 
 
 </android.support.design.widget.CoordinatorLayout>
