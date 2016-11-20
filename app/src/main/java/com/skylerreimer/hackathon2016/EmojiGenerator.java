@@ -27,11 +27,11 @@ public class EmojiGenerator {
 
     public void PopulateList() {
         int emojiHeight = 88;
-        int emojiWidth = 88;
-        int startingRowXPosition = 0;
+        int emojiWidth = 87;
+        int startingRowXPosition = 122;
         int startingRowYPosition = 12;
-        int verticalDistanceToNewRow = 122;
-        int horizontalDistanceToNewColumn = 125;
+        int verticalDistanceToNewRow = 120;
+        int horizontalDistanceToNewColumn = 126;
 
         int currentXPosition = startingRowXPosition;
         int currentYPosition = startingRowYPosition;
@@ -42,7 +42,7 @@ public class EmojiGenerator {
             currentYPosition = startingRowYPosition + row
                     * verticalDistanceToNewRow;
 
-            for (int column = 0; column < 8; column++) {
+            for (int column = 0; column <= 8; column++) {
                 currentXPosition = startingRowXPosition + column
                         * horizontalDistanceToNewColumn;
 
