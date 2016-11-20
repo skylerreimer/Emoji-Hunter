@@ -1,5 +1,6 @@
 package com.skylerreimer.hackathon2016;
 
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
@@ -8,10 +9,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.content.Context;
+
+import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Random;
 import android.graphics.PorterDuff.Mode;
@@ -45,12 +49,9 @@ public class DrawingBackground extends View {
         return textSize;
     }
 
-
-
     public DrawingBackground(Context context)
     {
         super(context);
-
 
         emojis =  BitmapFactory.decodeResource(getResources(), R.drawable.emoji_spritesheet);
         emojisCopy =  BitmapFactory.decodeResource(getResources(), R.drawable.emoji_spritesheet).copy(Bitmap.Config.ARGB_8888, true);
@@ -61,7 +62,6 @@ public class DrawingBackground extends View {
         pTouch.setXfermode(new PorterDuffXfermode(Mode.SRC_OUT));
         pTouch.setColor(Color.TRANSPARENT);
         pTouch.setMaskFilter(new BlurMaskFilter(15, BlurMaskFilter.Blur.NORMAL));
-
 
     }
 
@@ -126,21 +126,29 @@ public class DrawingBackground extends View {
 
 
 
-        topHalf.set(0,0,canvas.getWidth(), canvas.getHeight()/2);
+        topHalf.set(0,0,canvas.getWidth(), canvas.getHeight());
 
-        centerText.setColor(Color.GRAY);
+        centerText.setColor(Color.argb(255, 240, 248, 255));
         centerText.setStyle(Paint.Style.FILL);
 
         canvas.drawRect(topHalf, centerText);
 
-        timeText.setColor(Color.argb(255, 249, 129, 0));
-        scoreText.setColor(Color.argb(255, 249, 129, 0));
-        centerText.setColor(Color.argb(255, 249, 129, 0));
+        timeText.setTypeface(Typeface.MONOSPACE);
+        scoreText.setTypeface(Typeface.MONOSPACE);
+        centerText.setTypeface(Typeface.MONOSPACE);
+
+
+        timeText.setColor(Color.argb(255, 0, 0, 0));
+        scoreText.setColor(Color.argb(255, 0, 0, 0));
+        centerText.setColor(Color.argb(255, 0, 0, 0));
+
 
         int textSize = getStatusBarSize();
         centerText.setTextSize(textSize);
         timeText.setTextSize(textSize);
         scoreText.setTextSize(textSize);
+
+
 
         //canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/4, canvas.getWidth()/4, centerText);
 
