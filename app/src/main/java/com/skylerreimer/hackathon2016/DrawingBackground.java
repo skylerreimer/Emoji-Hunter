@@ -204,8 +204,7 @@ public class DrawingBackground extends View {
 
     public void DrawEmojis(Canvas canvas)
     {
-        EmojiGenerator emojiGen = new EmojiGenerator();
-        emojiGen.PopulateList();
+        EmojiGenerator emojiGen = new EmojiGenerator(canvas);
         Map emojiList = emojiGen.GetList();
 
         int difficulty = 16;
