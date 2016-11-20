@@ -1,5 +1,6 @@
 package com.skylerreimer.hackathon2016;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,10 +20,13 @@ public class EmojiGenerator {
 
 
     private Map emojiList;
+    private Canvas canvas;
 
-    public EmojiGenerator() {
+    public EmojiGenerator(Canvas myCanvas) {
 
+        canvas = myCanvas;
         this.emojiList = new HashMap<Integer, Rect>();
+        PopulateList();
     }
 
     public void PopulateList() {

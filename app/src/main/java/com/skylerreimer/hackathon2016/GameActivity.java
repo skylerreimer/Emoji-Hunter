@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 public class GameActivity extends AppCompatActivity {
     MediaPlayer mp = null;
     DrawingBackground d;
-    //GameSurfaceActivity gv;
 
 
     @Override
@@ -24,7 +23,6 @@ public class GameActivity extends AppCompatActivity {
 
 
         d = new DrawingBackground(this);
-    //    gv = new GameSurfaceActivity();
         setContentView(d);
     }
 
