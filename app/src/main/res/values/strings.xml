@@ -18,6 +18,7 @@
     <string name="soundOn">SFX: ON</string>
     <string name="soundOff">SFX: OFF</string>
 
+    <string name="extrasTitle">We are poor so no extras! \n Greedy Jerk.</string>
     <string name="back">Back</string>
     <string name="title_activity_game">GameActivity</string>
 </resources>
