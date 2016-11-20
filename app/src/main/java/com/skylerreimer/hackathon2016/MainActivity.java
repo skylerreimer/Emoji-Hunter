@@ -1,5 +1,6 @@
 package com.skylerreimer.hackathon2016;
 
+import android.animation.LayoutTransition;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -16,11 +17,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import static android.R.interpolator.linear;
 
 public class MainActivity extends AppCompatActivity {
     MediaPlayer mp = null;
@@ -68,11 +72,6 @@ public class MainActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.disconnect();
     }
-
-    private Transition createFadeTransition() {
-        Transition fadeTransition = new Fade();
-        return  fadeTransition;
-    }
     public void closeApp(View view) {
         moveTaskToBack(true);
         MainActivity.this.finish();
@@ -80,13 +79,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void startButton(View view) {
 
-        if (Build.VERSION.SDK_INT > 19) {
-            ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.scene_root);
-            Scene diffScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.difficulty_select, this);
-            TransitionManager.go(diffScreen, createFadeTransition());
-        } else {
-            setContentView(R.layout.difficulty_select);
-        }
+//        if (Build.VERSION.SDK_INT > 19) {
+//
+//            ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.scene_root);
+//            Scene diffScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.difficulty_select, this);
+//            Transition fadeTransition = new Fade();
+//            TransitionManager.go(diffScreen, fadeTransition);
+//
+//        } else {
+//            setContentView(R.layout.difficulty_select);
+//        }
+        setContentView(R.layout.difficulty_select);
     }
 
     public void extraButton(View view) {
