@@ -28,7 +28,7 @@ public class EmojiGenerator {
     public void PopulateList() {
         int emojiHeight = 88;
         int emojiWidth = 88;
-        int startingRowXPosition = 248;
+        int startingRowXPosition = 0;
         int startingRowYPosition = 12;
         int verticalDistanceToNewRow = 122;
         int horizontalDistanceToNewColumn = 125;
@@ -36,19 +36,18 @@ public class EmojiGenerator {
         int currentXPosition = startingRowXPosition;
         int currentYPosition = startingRowYPosition;
 
-        int index = 1;
+        int index = 0;
 
         for (int row = 0; row < 5; row++) {
             currentYPosition = startingRowYPosition + row
                     * verticalDistanceToNewRow;
-            currentXPosition = startingRowXPosition;
 
-            for (int column = 0; column < 9; column++) {
+            for (int column = 0; column < 8; column++) {
                 currentXPosition = startingRowXPosition + column
                         * horizontalDistanceToNewColumn;
 
                 this.emojiList.put(index, new Rect(currentXPosition,
-                        currentYPosition, emojiHeight, emojiWidth));
+                        currentYPosition, currentXPosition + emojiWidth, currentYPosition + emojiHeight));
                 index++;
             }
         }
