@@ -93,6 +93,12 @@
             </LinearLayout>
 
         </LinearLayout>
+        <FrameLayout
+            android:id="@+id/scene_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </FrameLayout>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

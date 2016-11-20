@@ -3,9 +3,16 @@ package com.skylerreimer.hackathon2016;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
+import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -47,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
+
     }
 
     @Override
@@ -61,14 +69,24 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
 
-
+    private Transition createFadeTransition() {
+        Transition fadeTransition = new Fade();
+        return  fadeTransition;
+    }
     public void closeApp(View view) {
         moveTaskToBack(true);
         MainActivity.this.finish();
     }
 
     public void startButton(View view) {
-        setContentView(R.layout.difficulty_select);
+
+        if (Build.VERSION.SDK_INT > 19) {
+            ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.scene_root);
+            Scene diffScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.difficulty_select, this);
+            TransitionManager.go(diffScreen, createFadeTransition());
+        } else {
+            setContentView(R.layout.difficulty_select);
+        }
     }
 
     public void extraButton(View view) {
