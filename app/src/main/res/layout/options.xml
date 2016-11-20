@@ -21,6 +21,7 @@
 
             <TextView
                 android:text="@string/optionTitle"
+                android:fontFamily="sans-serif-smallcaps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
