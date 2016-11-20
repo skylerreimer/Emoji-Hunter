@@ -2,19 +2,36 @@ package com.skylerreimer.hackathon2016;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.content.Context;
 import java.util.Map;
 import java.util.Random;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.os.Bundle;
+import android.view.MotionEvent;
 
 
 public class DrawingBackground extends View {
 
-    Bitmap emojis =  BitmapFactory.decodeResource(getResources(), R.drawable.emoji_spritesheet);;
+    Bitmap emojis ;
+    Bitmap emojisCopy;
+    Canvas c2;
+    Paint pTouch;
+    Rect finalRect;
+    int offScreen = -100;
+    int x = offScreen;
+    int y = offScreen;
+    private Rect topHalf = new Rect();
+    private Paint centerText = new Paint(), timeText = new Paint(), scoreText = new Paint();
 
 
     private int getStatusBarSize() {
@@ -27,18 +44,87 @@ public class DrawingBackground extends View {
         return textSize;
     }
 
-    private Rect topHalf = new Rect();
-    private Paint centerText = new Paint(), timeText = new Paint(), scoreText = new Paint();
+
 
     public DrawingBackground(Context context)
     {
         super(context);
+
+
+        emojis =  BitmapFactory.decodeResource(getResources(), R.drawable.emoji_spritesheet);
+        emojisCopy =  BitmapFactory.decodeResource(getResources(), R.drawable.emoji_spritesheet).copy(Bitmap.Config.ARGB_8888, true);
+
+        c2 = new Canvas(emojisCopy);
+
+        pTouch = new Paint(Paint.ANTI_ALIAS_FLAG);
+        pTouch.setXfermode(new PorterDuffXfermode(Mode.SRC_OUT));
+        pTouch.setColor(Color.TRANSPARENT);
+        pTouch.setMaskFilter(new BlurMaskFilter(15, BlurMaskFilter.Blur.NORMAL));
+
+
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev)
+    {
+
+
+        switch (ev.getAction())
+        {
+            case MotionEvent.ACTION_DOWN:
+            {
+                //highlight choice
+                System.out.println("Press Detected");
+                x = (int) ev.getX();
+                y = (int) ev.getY();
+
+                ObserveTouchAction(finalRect);
+                break;
+            }
+
+        }
+
+        return true;
+    }
+
+    public void ObserveTouchAction (Rect correctRect)
+    {
+       // c2.drawBitmap(emojisCopy, 0,0, null);
+
+        if (x <= correctRect.right && x >= correctRect.left && y<= correctRect.bottom && y >= correctRect.top)
+        {
+
+            invalidate();
+            /*if ( x and y are inside the destination rectangle of the correct emoji
+                   call stuff to score,
+                   add time,
+                   display message popup saying you were right or something
+
+                    finally after these actions are done
+                    invalidate();
+
+             */
+
+
+
+
+            int radiusSize = 50;
+           // c2.drawCircle(x, y, radiusSize, pTouch);
+           // c2.drawBitmap(emojis, 0, 0, null);
+        }
+
+
     }
 
     @Override
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
+
+
+
+
         topHalf.set(0,0,canvas.getWidth(), canvas.getHeight()/2);
 
         centerText.setColor(Color.GRAY);
@@ -72,6 +158,9 @@ public class DrawingBackground extends View {
         centerText.setTextAlign(Paint.Align.CENTER);
         canvas.drawText("Find this Emoji",canvas.getWidth()/2, canvas.getHeight()/2 - textSize/2 , centerText);
         DrawEmojis(canvas);
+
+
+
     }
 
 
@@ -119,10 +208,10 @@ public class DrawingBackground extends View {
         Map emojiList = emojiGen.GetList();
 
         int difficulty = 16;
-        int startingXPosition = canvas.getWidth() / 10;
-        int startingYPosition = canvas.getHeight() * 5 / 9;
-        int verticalDistanceToNewRow = canvas.getHeight() / 12;
-        int horizontalDistanceToNewColumn = canvas.getWidth() / 5;
+        int startingXPosition = 0;
+        int startingYPosition = canvas.getHeight() / 2;
+        int verticalDistanceToNewRow = canvas.getHeight() / 8;
+        int horizontalDistanceToNewColumn = canvas.getWidth() / 4;
 
 
         int currentXPosition ;
@@ -136,6 +225,8 @@ public class DrawingBackground extends View {
         int chosenIndex = SelectIndex(difficulty);
 
         int currentIndex = 0;
+
+        Rect returnRect = new Rect();
 
         DrawSelectedEmojiUpTop(canvas, emojiList, chosenEmoji );
 
@@ -164,9 +255,15 @@ public class DrawingBackground extends View {
 
                 currentXPosition = startingXPosition + horizontalDistanceToNewColumn * col;
                 Rect destinationRect = new Rect(currentXPosition, currentYPosition, currentXPosition + horizontalDistanceToNewColumn, currentYPosition + verticalDistanceToNewRow);
+                if (currentIndex == chosenIndex)
+                {
+                    returnRect = destinationRect;
+                }
                 canvas.drawBitmap(emojis, sourceRect, destinationRect, new Paint());
                 currentIndex++;
             }
         }
+
+        finalRect = returnRect;
     }
 }

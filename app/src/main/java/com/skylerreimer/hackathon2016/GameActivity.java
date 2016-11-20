@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class GameActivity extends AppCompatActivity {
@@ -22,11 +23,12 @@ public class GameActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-
         d = new DrawingBackground(this);
     //    gv = new GameSurfaceActivity();
         setContentView(d);
     }
+
+
 
     @Override
     protected void onStart() {
