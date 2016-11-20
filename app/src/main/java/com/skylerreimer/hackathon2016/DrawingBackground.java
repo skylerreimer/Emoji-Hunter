@@ -30,6 +30,7 @@ public class DrawingBackground extends View {
     int offScreen = -100;
     int x = offScreen;
     int y = offScreen;
+    int score = -1;
     private Rect topHalf = new Rect();
     private Paint centerText = new Paint(), timeText = new Paint(), scoreText = new Paint();
 
@@ -141,10 +142,10 @@ public class DrawingBackground extends View {
         timeText.setTextSize(textSize);
         scoreText.setTextSize(textSize);
 
-        canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/4, canvas.getWidth()/4, centerText);
+        //canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/4, canvas.getWidth()/4, centerText);
 
         scoreText.setTextAlign(Paint.Align.LEFT);
-        int score = 0;
+        score++;
         canvas.drawText("Score: " + score, 0 ,textSize, scoreText);
 
         timeText.setTextAlign(Paint.Align.RIGHT);
