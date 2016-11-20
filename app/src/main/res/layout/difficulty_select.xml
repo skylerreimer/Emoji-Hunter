@@ -21,6 +21,7 @@
 
             <TextView
                 android:text="@string/select"
+                android:fontFamily="sans-serif-smallcaps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -92,12 +93,13 @@
 
             <Button
                 android:text="@string/back"
-                android:layout_width="128dp"
+                android:layout_width="256dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:onClick="backButton"/>
 
         </LinearLayout>
+
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
