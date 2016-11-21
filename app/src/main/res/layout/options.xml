@@ -9,6 +9,7 @@
     tools:context="com.skylerreimer.hackathon2016.MainActivity">
 
     <LinearLayout
+        android:id="@+id/scene_root"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

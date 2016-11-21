@@ -79,29 +79,55 @@ public class MainActivity extends AppCompatActivity {
 
     public void startButton(View view) {
 
-//        if (Build.VERSION.SDK_INT > 19) {
-//
-//            ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.scene_root);
-//            Scene diffScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.difficulty_select, this);
-//            Transition fadeTransition = new Fade();
-//            TransitionManager.go(diffScreen, fadeTransition);
-//
-//        } else {
-//            setContentView(R.layout.difficulty_select);
-//        }
-        setContentView(R.layout.difficulty_select);
-    }
+        if (Build.VERSION.SDK_INT > 19) {
+
+            ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.scene_root);
+            Scene diffScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.difficulty_select, this);
+            Transition fadeTransition = new Fade();
+            TransitionManager.go(diffScreen, fadeTransition);
+
+        } else {
+            setContentView(R.layout.difficulty_select);
+        }
+}
 
     public void extraButton(View view) {
-        setContentView(R.layout.extras);
+        if (Build.VERSION.SDK_INT > 19) {
+
+            ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.scene_root);
+            Scene extrasScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.extras, this);
+            Transition fadeTransition = new Fade();
+            TransitionManager.go(extrasScreen, fadeTransition);
+
+        } else {
+            setContentView(R.layout.difficulty_select);
+        }
     }
 
     public void optionButton(View view) {
-        setContentView(R.layout.options);
+        if (Build.VERSION.SDK_INT > 19) {
+
+            ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.scene_root);
+            Scene optionScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.options, this);
+            Transition fadeTransition = new Fade();
+            TransitionManager.go(optionScreen, fadeTransition);
+
+        } else {
+            setContentView(R.layout.difficulty_select);
+        }
     }
 
     public void backButton(View view) {
-        setContentView(R.layout.activity_main);
+        if (Build.VERSION.SDK_INT > 19) {
+
+            ViewGroup mSceneRoot = (ViewGroup) findViewById(R.id.scene_root);
+            Scene mainScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.activity_main, this);
+            Transition fadeTransition = new Fade();
+            TransitionManager.go(mainScreen, fadeTransition);
+
+        } else {
+            setContentView(R.layout.difficulty_select);
+        }
     }
 
     public void music(View view) {
