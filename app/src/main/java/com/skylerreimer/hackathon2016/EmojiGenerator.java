@@ -30,6 +30,8 @@ public class EmojiGenerator {
     }
 
     public void PopulateList() {
+        
+
         int emojiHeight = 88;
         int emojiWidth = 87;
         int startingRowXPosition = 122;
