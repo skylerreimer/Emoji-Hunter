@@ -18,6 +18,9 @@ import java.util.Random;
 
 public class Game extends View {
 
+    //crishna
+
+
     private Bitmap emojis;
     private Rect finalRect;
     private int x;
