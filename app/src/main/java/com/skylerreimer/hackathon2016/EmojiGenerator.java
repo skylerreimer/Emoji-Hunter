@@ -1,57 +1,47 @@
 package com.skylerreimer.hackathon2016;
 
-import android.graphics.Canvas;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.graphics.Bitmap;
-import java.lang.Object;
-import java.util.Map;
+import android.util.SparseArray;
 import android.graphics.Rect;
-import java.util.HashMap;
 
-public class EmojiGenerator {
+class EmojiGenerator {
 
+    private SparseArray<Rect> emojiList;
 
-
-    private Map emojiList;
-    private Canvas canvas;
-
-    public EmojiGenerator(Canvas myCanvas) {
-
-        canvas = myCanvas;
-        this.emojiList = new HashMap<Integer, Rect>();
-        PopulateList();
+    /**
+     * Constructor in that creates sprite sheet for the game
+     */
+    EmojiGenerator() {
+        this.emojiList = new SparseArray<>();
+        //calling populateList which populates the sprite sheet
+        populateList();
     }
 
-    public void PopulateList() {
-        
-
+    /*
+     *  populates a SparseArray of Rectangles to later be returned from the sprite png.
+     *  Values are cut of based on height and width specifications of the emojis
+     */
+    private void populateList() {
+        //dimensions of individual emoji icons
         int emojiHeight = 88;
         int emojiWidth = 87;
-        int startingRowXPosition = 122;
-        int startingRowYPosition = 12;
+
+        //distance between two emojis from the top of one emoji to the top of the next emoji
         int verticalDistanceToNewRow = 120;
+        //distance between two emojis from the left of one emoji to the left of the next emoji
         int horizontalDistanceToNewColumn = 126;
 
-        int currentXPosition = startingRowXPosition;
-        int currentYPosition = startingRowYPosition;
-
+        //the starting index and initial variables for the loop
         int index = 0;
+        int currentYPosition;
+        int currentXPosition;
 
-        for (int row = 0; row < 5; row++) {
-            currentYPosition = startingRowYPosition + row
-                    * verticalDistanceToNewRow;
+        //for loop in order to calculate the new starting position of each emoji in the sprite sheet
+        for(int y = 0; y < 5; y++){
+            currentYPosition = y * verticalDistanceToNewRow;
+            for(int x = 0; x <= 8; x++){
+                currentXPosition = x * horizontalDistanceToNewColumn;
 
-            for (int column = 0; column <= 8; column++) {
-                currentXPosition = startingRowXPosition + column
-                        * horizontalDistanceToNewColumn;
-
+                //creating new rectangle coordinate and adding that coordinate to the HashMap
                 this.emojiList.put(index, new Rect(currentXPosition,
                         currentYPosition, currentXPosition + emojiWidth, currentYPosition + emojiHeight));
                 index++;
@@ -59,18 +49,11 @@ public class EmojiGenerator {
         }
     }
 
-    public Map GetList()
-    {
-        return emojiList;
+    /**
+     * Retuns the emoji SparseArray to the call
+     * @return a Map of all the current emojis
+     */
+    SparseArray<Rect> getSparseArray(){
+        return this.emojiList;
     }
-
-
-
-
-
-
-
-
-
-
 }
