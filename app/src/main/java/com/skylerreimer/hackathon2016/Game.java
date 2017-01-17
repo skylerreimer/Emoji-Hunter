@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,24 +19,28 @@ import java.util.Random;
 
 public class Game extends View {
 
-    //crishna
-
-
     private Bitmap emojis;
     private Rect finalRect;
     private int x;
     private int y;
     private int score;
+    private int textSize;
+    private int totalSquares;
+    private int totalSquareRoot;
+    private int chosenEmoji;
+    private double time;
     private Rect topHalf = new Rect();
     private Paint centerText, timeText, scoreText, bgColor;
     private Handler handler;
-    private double time;
+
     private Context end;
     private boolean point;
     private SparseArray<Rect> emojiArray;
-    private int chosenEmoji;
+
     private Rect[] sourceHolder, destinationHolder;
-    private int textSize;
+
+    //total time in ms the game will run
+    private int TOTALTIME = 5000;
 
     /**
      * Constructor that sets initial states
@@ -58,7 +63,7 @@ public class Game extends View {
         initialVisuals();
 
         //setting up times and scores
-        this.time = 15000;
+        this.time = TOTALTIME;
         this.score = 0;
         this.point = true;
         this.handler = new Handler();
@@ -111,6 +116,24 @@ public class Game extends View {
         }else{
             this.textSize = 0;
         }
+    }
+
+    /**
+     * Sets the games difficulty
+     * @param difficulty game difficulties are easy = 0; medium = 1; hard = 2
+     */
+    public void setDifficulty(int difficulty) {
+        if(difficulty == 0){
+            this.totalSquares = (int)Math.pow(2, 2);
+        }else if(difficulty == 1){
+            this.totalSquares = (int)Math.pow(3, 2);
+        }else if(difficulty == 2){
+            this.totalSquares = (int)Math.pow(4, 2);
+        }else{
+            ((Activity)end).finish();
+        }
+
+        this.totalSquareRoot = (int)Math.sqrt(this.totalSquares);
     }
 
     /**
@@ -221,14 +244,13 @@ public class Game extends View {
     }
 
     public void DrawNewEmojis(Canvas canvas) {
-        this.sourceHolder = new Rect[16];
-        this.destinationHolder = new Rect[16];
-        int difficulty = 16; //number of emojis on screen. Only 16 right now
+        this.sourceHolder = new Rect[this.totalSquares];
+        this.destinationHolder = new Rect[this.totalSquares];
         //divide the bottom half of screen into grid
         int startingXPosition = 0;
         int startingYPosition = canvas.getHeight() / 2;
-        int verticalDistanceToNewRow = canvas.getHeight() / 8;
-        int horizontalDistanceToNewColumn = canvas.getWidth() / 4;
+        int verticalDistanceToNewRow = canvas.getHeight() / (2 * this.totalSquareRoot);
+        int horizontalDistanceToNewColumn = canvas.getWidth() / this.totalSquareRoot;
 
         int currentXPosition;
         int currentYPosition;
@@ -237,18 +259,19 @@ public class Game extends View {
         Random random = new Random();
 
         this.chosenEmoji = random.nextInt(this.emojiArray.size());
-        int chosenIndex = random.nextInt(difficulty);
+        int chosenIndex = random.nextInt(this.totalSquares);
 
         DrawSelectedEmojiUpTop(canvas, this.emojiArray, chosenEmoji);
 
         int currentIndex = 0;
-        //draw the emjojis row by row; column by column
-        for (int row = 0; row < 4; row++) {
+
+        //draw all the emojis for each row and colum position
+        for (int row = 0; row < this.totalSquares / this.totalSquareRoot; row++) {
             currentYPosition = startingYPosition + row * verticalDistanceToNewRow;
 
-            for (int col = 0; col < 4; col++) {
+            for (int col = 0; col < this.totalSquares / this.totalSquareRoot; col++) {
                 Rect sourceRect;
-                //if we're on the chosen index use that emjoi
+                //use the emoji located at the choosen index
                 if (currentIndex == chosenIndex) {
                     sourceRect = this.emojiArray.get(chosenEmoji);
 
@@ -279,7 +302,7 @@ public class Game extends View {
     public void DrawCurrentEmojis(Canvas canvas) {
         DrawSelectedEmojiUpTop(canvas, this.emojiArray, this.chosenEmoji);
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < this.totalSquares; i++) {
             Rect sourceRect = this.sourceHolder[i];
             Rect destinationRect = this.destinationHolder[i];
 

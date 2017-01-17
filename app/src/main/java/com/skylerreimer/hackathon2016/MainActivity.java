@@ -22,7 +22,9 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
-    MediaPlayer mp = null;
+    private MediaPlayer mp = null;
+    private Intent intent;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -148,10 +150,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void startGame(View view) {
-        Intent intent = new Intent(this, GameSetUp.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-        this.startActivity(intent);
+    public void startGameEasy(View view) {
+        this.intent = new Intent(this, GameSetUp.class);
+        this.intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        this.intent.putExtra("DIFFICULTY", 0);
+        this.startActivity(this.intent);
+
+        //going back to main menu
+        this.backButton(view);
+    }
+
+    public void startGameMedium(View view) {
+        this.intent = new Intent(this, GameSetUp.class);
+        this.intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        this.intent.putExtra("DIFFICULTY", 1);
+        this.startActivity(this.intent);
+
+        //going back to main menu
+        this.backButton(view);
+    }
+
+    public void startGameHard(View view) {
+        this.intent = new Intent(this, GameSetUp.class);
+        this.intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        this.intent.putExtra("DIFFICULTY", 2);
+        this.startActivity(this.intent);
 
         //going back to main menu
         this.backButton(view);

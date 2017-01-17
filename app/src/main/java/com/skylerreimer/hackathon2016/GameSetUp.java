@@ -1,8 +1,10 @@
 package com.skylerreimer.hackathon2016;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -10,6 +12,7 @@ public class GameSetUp extends AppCompatActivity {
     //media player variable intialized to null
     private MediaPlayer mp = null;
     private Game game;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,9 @@ public class GameSetUp extends AppCompatActivity {
         //drawing background and setting user view to this background
 
         game = new Game(this);
+
+        this.intent = getIntent();
+        game.setDifficulty(this.intent.getIntExtra("DIFFICULTY", -20));
 
         this.setContentView(game);
     }

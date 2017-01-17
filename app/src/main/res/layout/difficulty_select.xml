@@ -10,7 +10,6 @@
     tools:context="com.skylerreimer.hackathon2016.MainActivity">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scene_root"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -51,7 +50,8 @@
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:onClick="startGame"/>
+                    android:onClick="startGameEasy"
+                    android:elevation="0dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -65,7 +65,7 @@
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:onClick="startGame"/>
+                    android:onClick="startGameMedium" />
 
             </LinearLayout>
 
@@ -80,7 +80,7 @@
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:onClick="startGame"/>
+                    android:onClick="startGameHard" />
 
             </LinearLayout>
 
