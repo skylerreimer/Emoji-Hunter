@@ -39,6 +39,11 @@ public class Game extends View {
 
     private Rect[] sourceHolder, destinationHolder;
 
+    /*
+    INSERTING A TEST COMMENT
+     */
+
+
     //total time in ms the game will run
     private int TOTALTIME = 5000;
 
