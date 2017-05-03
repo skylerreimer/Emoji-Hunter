@@ -39,11 +39,6 @@ public class Game extends View {
 
     private Rect[] sourceHolder, destinationHolder;
 
-    /*
-    Andrew's Branch test
-     */
-
-
     //total time in ms the game will run
     private int TOTALTIME = 5000;
 
@@ -57,8 +52,8 @@ public class Game extends View {
         this.end = context;
 
         //getting sprite sheet for context and setting the exact size
-        this.emojis = BitmapFactory.decodeResource(getResources(), R.drawable.emoji_spritesheet);
-        this.emojis = Bitmap.createScaledBitmap(emojis, 1221, 571, false);
+        this.emojis = BitmapFactory.decodeResource(getResources(), R.drawable.emoji_sprits);
+        this.emojis = Bitmap.createScaledBitmap(emojis, 2048, 2048, true);
 
         //creating sparseArray of emojis
         EmojiGenerator emojiGen = new EmojiGenerator();
@@ -152,7 +147,7 @@ public class Game extends View {
     /**
      * Game timer that will terminate the game once it hits time 0
      */
-    class startTimer implements Runnable{
+    private class startTimer implements Runnable{
         @Override
         public void run() {
             //if there is still time, redraw
