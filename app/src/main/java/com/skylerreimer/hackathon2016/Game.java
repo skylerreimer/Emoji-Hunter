@@ -9,11 +9,12 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
 import android.content.Context;
+import java.util.Set;
+import java.util.HashSet;
 
 import java.util.Random;
 
@@ -38,6 +39,7 @@ public class Game extends View {
     private SparseArray<Rect> emojiArray;
 
     private Rect[] sourceHolder, destinationHolder;
+    private Set<Integer> usedEmojis;
 
     //total time in ms the game will run
     private int TOTALTIME = 5000;
@@ -63,7 +65,7 @@ public class Game extends View {
         initialVisuals();
 
         //setting up times and scores
-        this.time = TOTALTIME;
+        this.time = this.TOTALTIME;
         this.score = 0;
         this.point = true;
         this.handler = new Handler();
@@ -96,9 +98,9 @@ public class Game extends View {
 
         //getting and setting the textsize for each of the text areas
         getStatusBarSize();
-        this.centerText.setTextSize(textSize);
-        this.timeText.setTextSize(textSize);
-        this.scoreText.setTextSize(textSize);
+        this.centerText.setTextSize(this.textSize);
+        this.timeText.setTextSize(this.textSize);
+        this.scoreText.setTextSize(this.textSize);
 
         //setting each text area alignment
         this.scoreText.setTextAlign(Paint.Align.LEFT);
@@ -244,8 +246,11 @@ public class Game extends View {
     }
 
     public void DrawNewEmojis(Canvas canvas) {
+        //declare containers
         this.sourceHolder = new Rect[this.totalSquares];
         this.destinationHolder = new Rect[this.totalSquares];
+        this.usedEmojis = new HashSet<>();
+
         //divide the bottom half of screen into grid
         int startingXPosition = 0;
         int startingYPosition = canvas.getHeight() / 2;
@@ -258,29 +263,33 @@ public class Game extends View {
         //randomly select an emoji
         Random random = new Random();
 
+        //choose random emoji to be put at the top of the page
         this.chosenEmoji = random.nextInt(this.emojiArray.size());
         int chosenIndex = random.nextInt(this.totalSquares);
 
+        //draw selected emoji at the top of the page
         DrawSelectedEmojiUpTop(canvas, this.emojiArray, chosenEmoji);
 
+        //create an index counter
         int currentIndex = 0;
 
         //draw all the emojis for each row and colum position
         for (int row = 0; row < this.totalSquares / this.totalSquareRoot; row++) {
             currentYPosition = startingYPosition + row * verticalDistanceToNewRow;
-
             for (int col = 0; col < this.totalSquares / this.totalSquareRoot; col++) {
                 Rect sourceRect;
                 //use the emoji located at the choosen index
                 if (currentIndex == chosenIndex) {
-                    sourceRect = this.emojiArray.get(chosenEmoji);
-
+                    sourceRect = this.emojiArray.get(this.chosenEmoji);
                 } else { //otherwise pick a random one that's not the chosen
                     int randomEmojiToDisplay = random.nextInt(this.emojiArray.size());
-                    while (randomEmojiToDisplay == chosenEmoji) {
+                    //check to make sure the random emoji is not the chosenEmoji and and for no repeats
+                    while (randomEmojiToDisplay == this.chosenEmoji || this.usedEmojis.contains(randomEmojiToDisplay)) {
                         randomEmojiToDisplay = random.nextInt(this.emojiArray.size());
                     }
                     sourceRect = this.emojiArray.get(randomEmojiToDisplay);
+                    //add the random emoji to a set so it is not selected twice
+                    this.usedEmojis.add(randomEmojiToDisplay);
                 }
                 //draw the emoji
                 currentXPosition = startingXPosition + horizontalDistanceToNewColumn * col;
@@ -293,12 +302,14 @@ public class Game extends View {
                 this.sourceHolder[currentIndex] = sourceRect;
                 this.destinationHolder[currentIndex] = destinationRect;
 
+                //draw the current emoji on the bitmap
                 canvas.drawBitmap(this.emojis, sourceRect, destinationRect, null);
                 currentIndex++;
             }
         }
     }
 
+    //redraw all the emoji
     public void DrawCurrentEmojis(Canvas canvas) {
         DrawSelectedEmojiUpTop(canvas, this.emojiArray, this.chosenEmoji);
 
