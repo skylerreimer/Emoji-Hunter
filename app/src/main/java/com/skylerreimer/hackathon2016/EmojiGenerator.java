@@ -24,11 +24,6 @@ class EmojiGenerator {
         int emojiHeight = 128;
         int emojiWidth = 128;
 
-        //distance between two emojis from the top of one emoji to the top of the next emoji
-        int verticalDistanceToNewRow = emojiHeight;
-        //distance between two emojis from the left of one emoji to the left of the next emoji
-        int horizontalDistanceToNewColumn = emojiWidth;
-
         //the starting index and initial variables for the loop
         int index = 0;
         int currentYPosition;
@@ -36,9 +31,9 @@ class EmojiGenerator {
 
         //for loop in order to calculate the new starting position of each emoji in the sprite sheet
         for(int y = 0; y < 5; y++){
-            currentYPosition = y * verticalDistanceToNewRow;
+            currentYPosition = y * emojiHeight;
             for(int x = 0; x < 16; x++){
-                currentXPosition = x * horizontalDistanceToNewColumn;
+                currentXPosition = x * emojiWidth;
 
                 //creating new rectangle coordinate and adding that coordinate to the HashMap
                 this.emojiList.put(index, new Rect(currentXPosition,
@@ -47,11 +42,12 @@ class EmojiGenerator {
             }
         }
 
+        //last row does not hold a full row of emoji, so cut out custom row length
         int y = 5;
 
-            currentYPosition = y * verticalDistanceToNewRow;
+            currentYPosition = y * emojiHeight;
             for(int x = 0; x < 12; x++) {
-                currentXPosition = x * horizontalDistanceToNewColumn;
+                currentXPosition = x * emojiWidth;
 
                 //creating new rectangle coordinate and adding that coordinate to the HashMap
                 this.emojiList.put(index, new Rect(currentXPosition,
