@@ -276,6 +276,7 @@ public class Game extends View {
         //draw all the emojis for each row and colum position
         for (int row = 0; row < this.totalSquares / this.totalSquareRoot; row++) {
             currentYPosition = startingYPosition + row * verticalDistanceToNewRow;
+
             for (int col = 0; col < this.totalSquares / this.totalSquareRoot; col++) {
                 Rect sourceRect;
                 //use the emoji located at the choosen index
