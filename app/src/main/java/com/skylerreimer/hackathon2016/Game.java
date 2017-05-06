@@ -48,7 +48,7 @@ public class Game extends View {
      * Constructor that sets initial states
      * @param context the context context being passed
      */
-    public Game(Context context) {
+    Game(Context context) {
         //backend context items
         super(context);
         this.end = context;
@@ -153,7 +153,7 @@ public class Game extends View {
         @Override
         public void run() {
             //if there is still time, redraw
-            if((time - .001) > 0.000) {
+            if((time - .0001) > 0.0000) {
                 time = time - 100;
                 handler.postDelayed(this, 100);
                 invalidate();
@@ -186,7 +186,7 @@ public class Game extends View {
     /**
      * Checks to see if two coordinates x and y are within the final rectangle area of the desired emoji
      */
-    public void ObserveTouchAction() {
+    private void ObserveTouchAction() {
         //if we touched the right emoji
         if (this.x <= this.finalRect.right && this.x >= this.finalRect.left &&
                 this.y <= this.finalRect.bottom && this.y >= this.finalRect.top) {
@@ -231,7 +231,7 @@ public class Game extends View {
         }
     }
 
-    public void DrawSelectedEmojiUpTop(Canvas canvas, SparseArray<Rect> emojisList, int indexOfEmoji){
+    private void DrawSelectedEmojiUpTop(Canvas canvas, SparseArray<Rect> emojisList, int indexOfEmoji){
         //gets the source rectangle of the emoji from the input emoji
         Rect sourceRect = emojisList.get(indexOfEmoji);
 
@@ -245,7 +245,7 @@ public class Game extends View {
         canvas.drawBitmap(emojis, sourceRect, new Rect(left, top, right, bottom), null);
     }
 
-    public void DrawNewEmojis(Canvas canvas) {
+    private void DrawNewEmojis(Canvas canvas) {
         //declare containers
         this.sourceHolder = new Rect[this.totalSquares];
         this.destinationHolder = new Rect[this.totalSquares];
@@ -311,7 +311,7 @@ public class Game extends View {
     }
 
     //redraw all the emoji
-    public void DrawCurrentEmojis(Canvas canvas) {
+    private void DrawCurrentEmojis(Canvas canvas) {
         DrawSelectedEmojiUpTop(canvas, this.emojiArray, this.chosenEmoji);
 
         for (int i = 0; i < this.totalSquares; i++) {
@@ -320,5 +320,9 @@ public class Game extends View {
 
             canvas.drawBitmap(this.emojis, sourceRect, destinationRect, null);
         }
+    }
+
+    public int getScore(){
+        return this.score;
     }
 }

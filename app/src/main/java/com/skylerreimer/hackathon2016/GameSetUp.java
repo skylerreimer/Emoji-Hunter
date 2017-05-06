@@ -12,7 +12,7 @@ public class GameSetUp extends AppCompatActivity {
     //media player variable intialized to null
     private MediaPlayer mp = null;
     private Game game;
-    private Intent intent;
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,33 +24,73 @@ public class GameSetUp extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //drawing background and setting user view to this background
+        this.game = new Game(this);
 
-        game = new Game(this);
+        //get data from the parent intent
+        Intent parentIntent = getIntent();
+        this.game.setDifficulty(parentIntent.getIntExtra("DIFFICULTY", -20));
+        setHighScore(parentIntent.getIntExtra("SCORE", -20));
 
-        this.intent = getIntent();
-        game.setDifficulty(this.intent.getIntExtra("DIFFICULTY", -20));
-
-        this.setContentView(game);
+        this.setContentView(this.game);
     }
 
     @Override
     protected void onStart() {
-        super.onStart();  // Always call the superclass method first
+        super.onStart();
 
-        //get and start music for game
-        //mp = MediaPlayer.create(getApplicationContext(), R.raw.audiofile);
-        //TODO
-        // mp.start();
-
-        game.startGame();
+        play();
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();  // Always call the superclass method first
+    public void onResume() {
+        super.onResume();
+    }
 
-        //stop game music
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    public void play(){
+        //starting the game
+        this.game.startGame();
+
+        //game music
         //TODO
         // mp.stop();
+
+        //sending back high score to parent intent
+        Intent output = new Intent();
+
+        //printint score output to log for testing
+        Log.d("SCORE", "" + this.game.getScore());
+
+        //checking if game score is > high score and returning the higher of the 2
+        if(this.game.getScore() > getHighScore()){
+            output.putExtra("HSCORE", this.game.getScore());
+        }else{
+            output.putExtra("HSCORE", getHighScore());
+        }
+
+        //setting output intent to be returned to the parent intent
+        setResult(RESULT_OK, output);
+    }
+
+    private void setHighScore(int score){
+        this.score = score;
+    }
+
+    public int getHighScore(){
+        return this.score;
     }
 }
