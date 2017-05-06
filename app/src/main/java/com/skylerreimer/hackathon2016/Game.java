@@ -152,13 +152,17 @@ public class Game extends View {
     private class startTimer implements Runnable{
         @Override
         public void run() {
-            //if there is still time, redraw
-            if((time - .0001) > 0.0000) {
-                time = time - 100;
-                handler.postDelayed(this, 100);
-                invalidate();
-            }else{ //otherwise end the game
-                ((Activity)end).finish();
+            try{
+                //if there is still time, redraw
+                if((time - .0001) > 0.0000) {
+                    time = time - 100;
+                    handler.postDelayed(this, 100);
+                    invalidate();
+                }else{ //otherwise end the game
+                    ((Activity)end).finish();
+                }
+            } catch (Exception e){
+                e.printStackTrace();
             }
         }
     }

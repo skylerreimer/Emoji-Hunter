@@ -38,12 +38,34 @@ public class GameSetUp extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        //start the game
         play();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void finish(){
+        //sending back high score to parent intent
+        Intent output = new Intent();
+
+        //printint score output to log for testing
+        Log.d("SCORE", "" + this.game.getScore());
+
+        //checking if game score is > high score and returning the higher of the 2
+        if(this.game.getScore() > getHighScore()){
+            output.putExtra("HSCORE", this.game.getScore());
+        }else{
+            output.putExtra("HSCORE", getHighScore());
+        }
+
+        //setting output intent to be returned to the parent intent
+        setResult(RESULT_OK, output);
+
+        super.finish();
     }
 
     @Override
@@ -68,28 +90,14 @@ public class GameSetUp extends AppCompatActivity {
         //game music
         //TODO
         // mp.stop();
-
-        //sending back high score to parent intent
-        Intent output = new Intent();
-
-        //printint score output to log for testing
-        Log.d("SCORE", "" + this.game.getScore());
-
-        //checking if game score is > high score and returning the higher of the 2
-        if(this.game.getScore() > getHighScore()){
-            output.putExtra("HSCORE", this.game.getScore());
-        }else{
-            output.putExtra("HSCORE", getHighScore());
-        }
-
-        //setting output intent to be returned to the parent intent
-        setResult(RESULT_OK, output);
     }
 
+    //set the high score
     private void setHighScore(int score){
         this.score = score;
     }
 
+    //get the high score
     public int getHighScore(){
         return this.score;
     }
