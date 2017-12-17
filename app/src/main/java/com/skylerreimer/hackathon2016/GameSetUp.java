@@ -9,8 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class GameSetUp extends AppCompatActivity {
-    //media player variable intialized to null
-    private MediaPlayer mp = null;
     private Game game;
     private int score;
 

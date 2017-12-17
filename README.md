@@ -17,7 +17,7 @@ When the application gets revisited we will put it on the play store
 
 # ToDo
 
-Implement a global high score
+Publish to the play store
 
 # Contributors
 

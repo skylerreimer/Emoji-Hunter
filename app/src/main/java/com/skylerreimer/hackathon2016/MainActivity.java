@@ -1,7 +1,6 @@
 package com.skylerreimer.hackathon2016;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,7 +22,6 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
-    private MediaPlayer mp = null;
     private Intent intent;
     private int highScore;
 
@@ -52,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
 
-        //TODO mp = MediaPlayer.create(getApplicationContext(), R.raw.audiofile);
-        //TODO mp.start();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
@@ -113,21 +109,6 @@ public class MainActivity extends AppCompatActivity {
      * Options menu button
      * @param view the current view
      */
-    public void leaderboardButton(View view) {
-        if (Build.VERSION.SDK_INT > 19) {
-            ViewGroup mSceneRoot = (ViewGroup)findViewById(R.id.scene_root);
-            Scene leaderboardScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.leaderboard, this);
-            Transition fadeTransition = new Fade();
-            TransitionManager.go(leaderboardScreen, fadeTransition);
-        } else {
-            this.setContentView(R.layout.difficulty_select);
-        }
-    }
-
-    /**
-     * Options menu button
-     * @param view the current view
-     */
     public void optionButton(View view) {
         if (Build.VERSION.SDK_INT > 19) {
             ViewGroup mSceneRoot = (ViewGroup)findViewById(R.id.scene_root);
@@ -148,12 +129,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (button.getText().equals("Music: ON")) {
             button.setText(R.string.musicOff);
-            //// TODO: 12/26/2016
-            //mp.pause();
         } else {
             button.setText(R.string.musicOn);
-            //TODO
-            //mp.start();
         }
     }
 

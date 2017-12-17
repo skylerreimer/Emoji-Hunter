@@ -57,20 +57,6 @@
                 android:gravity="center">
 
                 <Button
-                    android:text="@string/leaderbord"
-                    android:layout_width="256dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:onClick="leaderboardButton"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <Button
                     android:text="@string/options"
                     android:layout_width="256dp"
                     android:layout_height="wrap_content"
