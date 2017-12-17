@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.SparseArray;
 import android.view.MotionEvent;
@@ -196,10 +197,18 @@ public class Game extends View {
                 this.y <= this.finalRect.bottom && this.y >= this.finalRect.top) {
             //increase score
             this.score++;
+
             //redraw; give more time
             this.point = true;
             this.time += 3000;
+
+            MediaPlayer mp = MediaPlayer.create(end, R.raw.success);
+            mp.start();
+
             invalidate();
+        } else {
+            MediaPlayer mp = MediaPlayer.create(end, R.raw.failure2);
+            mp.start();
         }
     }
 

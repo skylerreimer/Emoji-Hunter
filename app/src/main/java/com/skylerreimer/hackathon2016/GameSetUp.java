@@ -55,6 +55,9 @@ public class GameSetUp extends AppCompatActivity {
         //printint score output to log for testing
         Log.d("SCORE", "" + this.game.getScore());
 
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.end);
+        mp.start();
+
         //checking if game score is > high score and returning the higher of the 2
         if(this.game.getScore() > getHighScore()){
             output.putExtra("HSCORE", this.game.getScore());

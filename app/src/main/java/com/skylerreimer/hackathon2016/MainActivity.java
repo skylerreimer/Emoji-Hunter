@@ -113,6 +113,21 @@ public class MainActivity extends AppCompatActivity {
      * Options menu button
      * @param view the current view
      */
+    public void leaderboardButton(View view) {
+        if (Build.VERSION.SDK_INT > 19) {
+            ViewGroup mSceneRoot = (ViewGroup)findViewById(R.id.scene_root);
+            Scene leaderboardScreen = Scene.getSceneForLayout(mSceneRoot, R.layout.leaderboard, this);
+            Transition fadeTransition = new Fade();
+            TransitionManager.go(leaderboardScreen, fadeTransition);
+        } else {
+            this.setContentView(R.layout.difficulty_select);
+        }
+    }
+
+    /**
+     * Options menu button
+     * @param view the current view
+     */
     public void optionButton(View view) {
         if (Build.VERSION.SDK_INT > 19) {
             ViewGroup mSceneRoot = (ViewGroup)findViewById(R.id.scene_root);
