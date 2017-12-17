@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="start">Start Game</string>
+    <string name="leaderbord">LeaderBoard</string>
     <string name="options">Options</string>
     <string name="quit">Exit</string>
     <string name="extras">Extras</string>
@@ -17,6 +18,9 @@
     <string name="musicOff">Music: OFF</string>
     <string name="soundOn">SFX: ON</string>
     <string name="soundOff">SFX: OFF</string>
+
+    <string name="leaderbordTitle">LeaderBoard</string>
+    <string name="leaderboard_id"></string>
 
     <string name="extrasTitle">We are poor so no extras! \n Greedy Jerk.</string>
     <string name="back">Back</string>

@@ -1,7 +1,6 @@
 package com.skylerreimer.hackathon2016;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.transition.Fade;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -22,8 +22,8 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
-    private MediaPlayer mp = null;
     private Intent intent;
+    private int highScore;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
 
-        //TODO mp = MediaPlayer.create(getApplicationContext(), R.raw.audiofile);
-        //TODO mp.start();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
@@ -131,12 +129,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (button.getText().equals("Music: ON")) {
             button.setText(R.string.musicOff);
-            //// TODO: 12/26/2016
-            //mp.pause();
         } else {
             button.setText(R.string.musicOn);
-            //TODO
-            //mp.start();
         }
     }
 
@@ -151,33 +145,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startGameEasy(View view) {
-        this.intent = new Intent(this, GameSetUp.class);
+        this.intent = new Intent(MainActivity.this, GameSetUp.class);
         this.intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         this.intent.putExtra("DIFFICULTY", 0);
-        this.startActivity(this.intent);
+        this.intent.putExtra("SCORE", this.highScore);
+        this.startActivityForResult(this.intent, 0);
 
         //going back to main menu
         this.backButton(view);
     }
 
     public void startGameMedium(View view) {
-        this.intent = new Intent(this, GameSetUp.class);
+        this.intent = new Intent(MainActivity.this, GameSetUp.class);
         this.intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         this.intent.putExtra("DIFFICULTY", 1);
-        this.startActivity(this.intent);
+        this.intent.putExtra("SCORE", this.highScore);
+        this.startActivityForResult(this.intent, 0);
 
         //going back to main menu
         this.backButton(view);
     }
 
     public void startGameHard(View view) {
-        this.intent = new Intent(this, GameSetUp.class);
+        this.intent = new Intent(MainActivity.this, GameSetUp.class);
         this.intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         this.intent.putExtra("DIFFICULTY", 2);
-        this.startActivity(this.intent);
+        this.intent.putExtra("SCORE", this.highScore);
+        this.startActivityForResult(this.intent, 0);
 
         //going back to main menu
         this.backButton(view);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 0){
+            if(resultCode == RESULT_OK){
+                this.highScore = data.getIntExtra("HSCORE", -1);
+                Log.d("MyApp", "VALUE: " + this.highScore);
+            }
+        }else{
+            Log.d("MyApp", "ERROR");
+        }
     }
 
     /**
