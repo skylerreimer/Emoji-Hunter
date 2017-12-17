@@ -3,9 +3,11 @@ We made this application during Hack Ohio 2016 as a way to learn how to make And
 The goal of the game is to select the correct emoji as shown in the screenshot.
 You get points and time for being correct and lose time for being incorrect
 
-![Alt text](https://github.com/skylerreimer/Emoji-Hunter/blob/master/screenshots/home.png "Home")
+## Home screen view
+![Home](/screenshots/home.png?raw=true "Home")
 
-![Alt text](https://github.com/skylerreimer/Emoji-Hunter/blob/master/screenshots/play.png "Gameplay")
+## Game play view
+![Hameplay](/screenshots/play.png?raw=true "Gameplay")
 
 # Installation
 
